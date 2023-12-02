@@ -4,6 +4,9 @@ import { Roboto } from "next/font/google";
 import { twMerge as cn } from "tailwind-merge";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import { AppContext } from "@/components/context/app-context";
+import { useContext, useState } from "react";
+import { AppWrapper } from "@/components/app-wrapper";
 
 // const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -27,14 +30,7 @@ export default function RootLayout({
             <body
                 className={cn("font-roboto text-default-950", roboto.className)}
             >
-                <ThemeProvider
-                    disableTransitionOnChange
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                >
-                    {children}
-                </ThemeProvider>
+                <AppWrapper>{children}</AppWrapper>
             </body>
         </html>
     );
